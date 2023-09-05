@@ -1,0 +1,1393 @@
+  [1m[35m (42.2ms)[0m  [1m[35mCREATE DATABASE "MiProyecto_development" ENCODING = 'unicode'[0m
+  [1m[35m (41.1ms)[0m  [1m[35mCREATE DATABASE "MiProyecto_test" ENCODING = 'unicode'[0m
+  [1m[35m (14.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5924992830086492925)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-29 03:42:02.006052"], ["updated_at", "2023-08-29 03:42:02.006052"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5924992830086492925)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5924992830086492925)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDatos (20230829034553)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.0ms)[0m  [1m[35mCREATE TABLE "datos" ("id" bigserial primary key, "nombre" character varying, "descripcion" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230829034553"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(5924992830086492925)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(5924992830086492925)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddNombreAndDescripcionToDatos (20230829035159)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "datos" ADD "nombre" character varying[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(5924992830086492925)[0m
+Started GET "/datos/index" for ::1 at 2023-08-29 00:09:45 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+ActiveRecord::PendingMigrationError (
+
+Migrations are pending. To resolve this issue, run:
+
+        bin/rails db:migrate RAILS_ENV=development
+
+You have 1 pending migration:
+
+20230829035159_add_nombre_and_descripcion_to_datos.rb
+
+
+):
+  
+activerecord (7.0.7.2) lib/active_record/migration.rb:627:in `check_pending!'
+activerecord (7.0.7.2) lib/active_record/migration.rb:592:in `block (2 levels) in call'
+activesupport (7.0.7.2) lib/active_support/file_update_checker.rb:83:in `execute'
+activerecord (7.0.7.2) lib/active_record/migration.rb:597:in `block in call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:589:in `synchronize'
+activerecord (7.0.7.2) lib/active_record/migration.rb:589:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/datos/index" for ::1 at 2023-08-29 00:10:52 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for DatosController):
+  
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/datos/index" for ::1 at 2023-08-29 00:14:26 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"index"}
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:9:in `show'
+Completed 404 Not Found in 13ms (ActiveRecord: 4.6ms | Allocations: 8399)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Dato with 'id'=index):
+  
+app/controllers/datos_controller.rb:9:in `show'
+Started GET "/datos/id" for ::1 at 2023-08-29 00:15:18 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"id"}
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:9:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms | Allocations: 1019)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Dato with 'id'=id):
+  
+app/controllers/datos_controller.rb:9:in `show'
+Started GET "/datos/1" for ::1 at 2023-08-29 00:15:29 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDato Load (0.5ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:9:in `show'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.5ms | Allocations: 942)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Dato with 'id'=1):
+  
+app/controllers/datos_controller.rb:9:in `show'
+Started GET "/" for ::1 at 2023-08-29 00:15:52 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.8ms | Allocations: 494)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.0ms | Allocations: 1721)
+
+
+Started GET "/index" for ::1 at 2023-08-29 00:16:06 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/index"):
+  
+Started GET "/" for 127.0.0.1 at 2023-08-29 00:16:45 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 827)
+Completed 200 OK in 7ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 7787)
+
+
+Started GET "/datos" for ::1 at 2023-08-29 00:17:40 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 5301)
+  Rendered layout layouts/application.html.erb (Duration: 212.4ms | Allocations: 98267)
+Completed 200 OK in 216ms (Views: 213.3ms | ActiveRecord: 0.4ms | Allocations: 100936)
+
+
+Started POST "/datos" for ::1 at 2023-08-29 00:17:50 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "nombre"=>"Martin", "descripcion"=>"El creador", "commit"=>"Crear Dato"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 941)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: dato):
+  
+app/controllers/datos_controller.rb:37:in `dato_params'
+app/controllers/datos_controller.rb:19:in `create'
+Started GET "/datos" for ::1 at 2023-08-29 00:17:50 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 3.0ms | Allocations: 3074)
+  Rendered layout layouts/application.html.erb (Duration: 5.9ms | Allocations: 5371)
+Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.3ms | Allocations: 5740)
+
+
+Started GET "/datos" for ::1 at 2023-08-29 00:17:52 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2874)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 5059)
+Completed 200 OK in 9ms (Views: 7.9ms | ActiveRecord: 0.4ms | Allocations: 5385)
+
+
+Started GET "/datos" for ::1 at 2023-08-29 00:17:53 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2859)
+  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 5045)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.3ms | Allocations: 5378)
+
+
+Started GET "/datos" for ::1 at 2023-08-29 00:18:19 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.6ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 7.4ms | Allocations: 2865)
+  Rendered layout layouts/application.html.erb (Duration: 12.1ms | Allocations: 5051)
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.6ms | Allocations: 5384)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-29 00:22:30 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.7ms | Allocations: 827)
+Completed 200 OK in 6ms (Views: 2.1ms | ActiveRecord: 0.0ms | Allocations: 7787)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 00:22:34 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 10.5ms | Allocations: 5041)
+  Rendered layout layouts/application.html.erb (Duration: 71.0ms | Allocations: 39320)
+Completed 200 OK in 78ms (Views: 73.3ms | ActiveRecord: 0.4ms | Allocations: 41990)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 00:22:37 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "nombre"=>"Martin", "descripcion"=>"", "commit"=>"Crear Dato"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 928)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: dato):
+  
+app/controllers/datos_controller.rb:37:in `dato_params'
+app/controllers/datos_controller.rb:19:in `create'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 00:22:37 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 2.9ms | Allocations: 3060)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 5354)
+Completed 200 OK in 6ms (Views: 5.8ms | ActiveRecord: 0.3ms | Allocations: 5722)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 00:22:44 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "nombre"=>"", "descripcion"=>"asdas\n", "commit"=>"Crear Dato"}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 770)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: dato):
+  
+app/controllers/datos_controller.rb:37:in `dato_params'
+app/controllers/datos_controller.rb:19:in `create'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 00:22:44 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 2873)
+  Rendered layout layouts/application.html.erb (Duration: 4.9ms | Allocations: 5073)
+Completed 200 OK in 6ms (Views: 5.0ms | ActiveRecord: 0.3ms | Allocations: 5400)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 00:22:48 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "nombre"=>"Martin", "descripcion"=>"AASd\n", "commit"=>"Crear Dato"}
+Completed 400 Bad Request in 3ms (ActiveRecord: 0.0ms | Allocations: 732)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: dato):
+  
+app/controllers/datos_controller.rb:37:in `dato_params'
+app/controllers/datos_controller.rb:19:in `create'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 00:22:48 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.2ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 2.3ms | Allocations: 2866)
+  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 5062)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.2ms | Allocations: 5392)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 00:23:01 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 6.7ms | Allocations: 5473)
+  Rendered layout layouts/application.html.erb (Duration: 48.4ms | Allocations: 40112)
+Completed 200 OK in 55ms (Views: 49.8ms | ActiveRecord: 0.4ms | Allocations: 48560)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 00:31:07 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "nombre"=>"Martin", "descripcion"=>"Creador", "commit"=>"Crear Dato"}
+Completed 400 Bad Request in 2ms (ActiveRecord: 0.0ms | Allocations: 896)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: dato):
+  
+app/controllers/datos_controller.rb:37:in `dato_params'
+app/controllers/datos_controller.rb:19:in `create'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 00:31:07 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 21.2ms | Allocations: 6190)
+  Rendered layout layouts/application.html.erb (Duration: 23.0ms | Allocations: 8490)
+Completed 200 OK in 24ms (Views: 18.9ms | ActiveRecord: 4.5ms | Allocations: 8858)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-29 10:23:16 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.1ms | Allocations: 827)
+Completed 200 OK in 11ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 7787)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 10:23:22 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.6ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 5041)
+  Rendered layout layouts/application.html.erb (Duration: 82.3ms | Allocations: 39651)
+Completed 200 OK in 87ms (Views: 83.3ms | ActiveRecord: 0.6ms | Allocations: 42321)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 10:23:27 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "nombre"=>"Martin", "descripcion"=>"Gaa", "commit"=>"Crear Dato"}
+Completed 400 Bad Request in 1ms (ActiveRecord: 0.0ms | Allocations: 928)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: dato):
+  
+app/controllers/datos_controller.rb:37:in `dato_params'
+app/controllers/datos_controller.rb:19:in `create'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 10:23:27 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 3060)
+  Rendered layout layouts/application.html.erb (Duration: 6.1ms | Allocations: 5354)
+Completed 200 OK in 7ms (Views: 6.5ms | ActiveRecord: 0.3ms | Allocations: 5722)
+
+
+  [1m[35m (14.5ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (7.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1550560627601359920)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateDatos (20230829164729)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.1ms)[0m  [1m[35mCREATE TABLE "datos" ("id" bigserial primary key, "nombre" character varying, "descripcion" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230829164729"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-08-29 16:50:45.576386"], ["updated_at", "2023-08-29 16:50:45.576386"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1550560627601359920)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-08-29 13:01:16 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.0ms | Allocations: 827)
+Completed 200 OK in 10ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 7787)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:01:22 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.5ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 12.8ms | Allocations: 3800)
+  Rendered layout layouts/application.html.erb (Duration: 58.3ms | Allocations: 38508)
+Completed 200 OK in 94ms (Views: 59.2ms | ActiveRecord: 4.3ms | Allocations: 56309)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 13:01:33 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "dato"=>{"nombre"=>"Martin", "descripcion"=>"Gasd"}, "commit"=>"Crear Dato"}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+  [1m[36mDato Create (0.8ms)[0m  [1m[32mINSERT INTO "datos" ("nombre", "descripcion", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Martin"], ["descripcion", "Gasd"], ["created_at", "2023-08-29 17:01:33.630463"], ["updated_at", "2023-08-29 17:01:33.630463"]]
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+Redirected to http://127.0.0.1:3000/datos
+Completed 302 Found in 11ms (ActiveRecord: 1.5ms | Allocations: 3616)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:01:33 -0400
+Processing by DatosController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 3.5ms | Allocations: 1645)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 3935)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.3ms | Allocations: 4376)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 13:02:21 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "dato"=>{"nombre"=>"Tini", "descripcion"=>"The best there is"}, "commit"=>"Crear Dato"}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+  [1m[36mDato Create (0.3ms)[0m  [1m[32mINSERT INTO "datos" ("nombre", "descripcion", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Tini"], ["descripcion", "The best there is"], ["created_at", "2023-08-29 17:02:21.289033"], ["updated_at", "2023-08-29 17:02:21.289033"]]
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+Redirected to http://127.0.0.1:3000/datos
+Completed 302 Found in 5ms (ActiveRecord: 2.0ms | Allocations: 2174)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:02:21 -0400
+Processing by DatosController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.2ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1534)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 3720)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.2ms | Allocations: 4067)
+
+
+Started GET "/datos/2" for 127.0.0.1 at 2023-08-29 13:04:15 -0400
+  
+AbstractController::ActionNotFound (The action 'show' could not be found for DatosController):
+  
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:146:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:05:44 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 7.3ms | Allocations: 4422)
+  Rendered layout layouts/application.html.erb (Duration: 66.0ms | Allocations: 39065)
+Completed 200 OK in 86ms (Views: 67.5ms | ActiveRecord: 3.2ms | Allocations: 62610)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-29 13:05:49 -0400
+Processing by DatosController#create as TURBO_STREAM
+  Parameters: {"authenticity_token"=>"[FILTERED]", "dato"=>{"nombre"=>"Omg", "descripcion"=>"Test\n"}, "commit"=>"Crear Dato"}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+  [1m[36mDato Create (0.5ms)[0m  [1m[32mINSERT INTO "datos" ("nombre", "descripcion", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Omg"], ["descripcion", "Test\n"], ["created_at", "2023-08-29 17:05:49.215782"], ["updated_at", "2023-08-29 17:05:49.215782"]]
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/datos_controller.rb:11:in `create'
+Redirected to http://127.0.0.1:3000/datos
+Completed 302 Found in 8ms (ActiveRecord: 1.4ms | Allocations: 3634)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:05:49 -0400
+Processing by DatosController#index as TURBO_STREAM
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1725)
+  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 4015)
+Completed 200 OK in 5ms (Views: 4.8ms | ActiveRecord: 0.3ms | Allocations: 4456)
+
+
+Started GET "/datos/3" for 127.0.0.1 at 2023-08-29 13:05:50 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mDato Load (1.0ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:20:in `show'
+Completed 406 Not Acceptable in 14ms (ActiveRecord: 1.6ms | Allocations: 3337)
+
+
+  
+ActionController::MissingExactTemplate (DatosController#show is missing a template for request formats: text/html):
+  
+actionpack (7.0.7.2) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (7.0.7.2) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.7.2) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.7.2) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/rescue.rb:23:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.7.2) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.7.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:06:42 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 4.0ms | Allocations: 1849)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 4146)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.3ms | Allocations: 4536)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:08:42 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 4501)
+  Rendered layout layouts/application.html.erb (Duration: 70.1ms | Allocations: 38780)
+Completed 200 OK in 95ms (Views: 72.5ms | ActiveRecord: 4.5ms | Allocations: 62319)
+
+
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-29 13:08:43 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDato Load (0.6ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering datos/show.html.erb within layouts/application
+  Rendered datos/show.html.erb within layouts/application (Duration: 1.3ms | Allocations: 288)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 2817)
+Completed 200 OK in 19ms (Views: 7.1ms | ActiveRecord: 1.1ms | Allocations: 5939)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:08:46 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.6ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1695)
+  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 3882)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.6ms | Allocations: 4240)
+
+
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-29 13:08:47 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDato Load (1.1ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering datos/show.html.erb within layouts/application
+  Rendered datos/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 53)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 2424)
+Completed 200 OK in 17ms (Views: 10.2ms | ActiveRecord: 1.1ms | Allocations: 3221)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:09:31 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1608)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 3800)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.4ms | Allocations: 4147)
+
+
+Started GET "/datos/2" for 127.0.0.1 at 2023-08-29 13:09:32 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDato Load (0.9ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering datos/show.html.erb within layouts/application
+  Rendered datos/show.html.erb within layouts/application (Duration: 0.5ms | Allocations: 53)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 2411)
+Completed 200 OK in 16ms (Views: 9.5ms | ActiveRecord: 0.9ms | Allocations: 3191)
+
+
+Started GET "/datos/2" for 127.0.0.1 at 2023-08-29 13:09:33 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:20:in `show'
+  Rendering layout layouts/application.html.erb
+  Rendering datos/show.html.erb within layouts/application
+  Rendered datos/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 53)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2415)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.4ms | Allocations: 3193)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:09:34 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1623)
+  Rendered layout layouts/application.html.erb (Duration: 9.2ms | Allocations: 3808)
+Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.4ms | Allocations: 4150)
+
+
+Started GET "/datos/2" for 127.0.0.1 at 2023-08-29 13:12:07 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:20:in `show'
+Completed 406 Not Acceptable in 19ms (ActiveRecord: 3.8ms | Allocations: 23079)
+
+
+  
+ActionController::MissingExactTemplate (DatosController#show is missing a template for request formats: text/html):
+  
+actionpack (7.0.7.2) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (7.0.7.2) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.7.2) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.7.2) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/rescue.rb:23:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.7.2) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.7.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:12:09 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 13.1ms | Allocations: 4073)
+  Rendered layout layouts/application.html.erb (Duration: 73.1ms | Allocations: 38506)
+Completed 200 OK in 77ms (Views: 75.0ms | ActiveRecord: 0.4ms | Allocations: 39845)
+
+
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-29 13:12:11 -0400
+Processing by DatosController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mDato Load (1.1ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:20:in `show'
+Completed 406 Not Acceptable in 7ms (ActiveRecord: 1.1ms | Allocations: 1080)
+
+
+  
+ActionController::MissingExactTemplate (DatosController#show is missing a template for request formats: text/html):
+  
+actionpack (7.0.7.2) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
+actionpack (7.0.7.2) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:215:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/rendering.rb:165:in `process_action'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
+actiontext (7.0.7.2) lib/action_text/rendering.rb:20:in `with_renderer'
+actiontext (7.0.7.2) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:127:in `instance_exec'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/rescue.rb:23:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.7.2) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.7.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2023-08-29 13:14:25 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 8.9ms | Allocations: 4519)
+  Rendered layout layouts/application.html.erb (Duration: 61.4ms | Allocations: 38802)
+Completed 200 OK in 80ms (Views: 63.0ms | ActiveRecord: 3.1ms | Allocations: 62341)
+
+
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-29 13:14:27 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/datos/1"):
+  
+Started GET "/datos" for 127.0.0.1 at 2023-08-29 13:16:48 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 11.2ms | Allocations: 4511)
+  Rendered layout layouts/application.html.erb (Duration: 59.2ms | Allocations: 38910)
+Completed 200 OK in 82ms (Views: 61.2ms | ActiveRecord: 3.9ms | Allocations: 62449)
+
+
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-29 13:16:50 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/datos/1"):
+  
+Started GET "/" for 127.0.0.1 at 2023-08-29 13:18:17 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 7.6ms | Allocations: 4477)
+  Rendered layout layouts/application.html.erb (Duration: 61.2ms | Allocations: 39026)
+Completed 200 OK in 83ms (Views: 63.2ms | ActiveRecord: 3.3ms | Allocations: 62571)
+
+
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-29 13:18:18 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/datos/1"):
+  
+Started GET "/" for 127.0.0.1 at 2023-08-29 13:18:31 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1841)
+  Rendered layout layouts/application.html.erb (Duration: 9.0ms | Allocations: 4137)
+Completed 200 OK in 11ms (Views: 9.4ms | ActiveRecord: 0.4ms | Allocations: 4528)
+
+
+Started GET "/datos/2" for 127.0.0.1 at 2023-08-29 13:18:32 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/datos/2"):
+  
+Started GET "/" for 127.0.0.1 at 2023-08-29 13:18:35 -0400
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1599)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 3785)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.3ms | Allocations: 4132)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-29 13:21:56 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.6ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 8.5ms | Allocations: 4475)
+  Rendered layout layouts/application.html.erb (Duration: 59.4ms | Allocations: 39148)
+Completed 200 OK in 80ms (Views: 60.9ms | ActiveRecord: 3.5ms | Allocations: 62693)
+
+
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-29 13:21:58 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/datos/1"):
+  
+Started GET "/" for 127.0.0.1 at 2023-08-31 08:16:00 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (1.1ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 18.7ms | Allocations: 4341)
+  Rendered layout layouts/application.html.erb (Duration: 148.3ms | Allocations: 39050)
+Completed 200 OK in 211ms (Views: 153.7ms | ActiveRecord: 9.8ms | Allocations: 62589)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-31 13:02:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (1.0ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 19.9ms | Allocations: 4463)
+  Rendered layout layouts/application.html.erb (Duration: 121.9ms | Allocations: 39045)
+Completed 200 OK in 168ms (Views: 126.3ms | ActiveRecord: 7.5ms | Allocations: 62583)
+
+
+Started GET "/" for 127.0.0.1 at 2023-08-31 13:02:13 -0400
+Processing by DatosController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.5ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1721)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 4016)
+Completed 200 OK in 8ms (Views: 6.9ms | ActiveRecord: 0.5ms | Allocations: 4520)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-31 13:07:24 -0400
+Processing by DatosController#index as */*
+  Rendering layout layouts/application.html.erb
+  Rendering datos/index.html.erb within layouts/application
+  [1m[36mDato Load (0.5ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/views/datos/index.html.erb:26
+  Rendered datos/index.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1618)
+  Rendered layout layouts/application.html.erb (Duration: 6.7ms | Allocations: 3804)
+Completed 200 OK in 8ms (Views: 6.7ms | ActiveRecord: 0.5ms | Allocations: 4159)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-31 13:12:30 -0400
+Processing by DatosController#create as */*
+Can't verify CSRF token authenticity.
+Completed 422 Unprocessable Entity in 1ms (ActiveRecord: 0.0ms | Allocations: 585)
+
+
+  
+ActionController::InvalidAuthenticityToken (Can't verify CSRF token authenticity.):
+  
+actionpack (7.0.7.2) lib/action_controller/metal/request_forgery_protection.rb:253:in `handle_unverified_request'
+actionpack (7.0.7.2) lib/action_controller/metal/request_forgery_protection.rb:286:in `handle_unverified_request'
+actionpack (7.0.7.2) lib/action_controller/metal/request_forgery_protection.rb:275:in `verify_authenticity_token'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:400:in `block in make_lambda'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:199:in `block (2 levels) in halting'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:34:in `block (2 levels) in <module:Callbacks>'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:200:in `block in halting'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:595:in `block in invoke_before'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:595:in `each'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:595:in `invoke_before'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:116:in `block in run_callbacks'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:138:in `run_callbacks'
+actionpack (7.0.7.2) lib/abstract_controller/callbacks.rb:233:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/rescue.rb:23:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `block in instrument'
+activesupport (7.0.7.2) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
+activesupport (7.0.7.2) lib/active_support/notifications.rb:206:in `instrument'
+actionpack (7.0.7.2) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
+actionpack (7.0.7.2) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
+activerecord (7.0.7.2) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
+actionpack (7.0.7.2) lib/abstract_controller/base.rb:151:in `process'
+actionview (7.0.7.2) lib/action_view/rendering.rb:39:in `process'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:188:in `dispatch'
+actionpack (7.0.7.2) lib/action_controller/metal.rb:251:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:50:in `block in serve'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `each'
+actionpack (7.0.7.2) lib/action_dispatch/journey/router.rb:32:in `serve'
+actionpack (7.0.7.2) lib/action_dispatch/routing/route_set.rb:852:in `call'
+rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
+rack (2.2.8) lib/rack/etag.rb:27:in `call'
+rack (2.2.8) lib/rack/conditional_get.rb:40:in `call'
+rack (2.2.8) lib/rack/head.rb:12:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
+rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
+rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/cookies.rb:704:in `call'
+activerecord (7.0.7.2) lib/active_record/migration.rb:603:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.7.2) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.7.2) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.7.2) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.7.2) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.7.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.7.2) lib/action_dispatch/middleware/host_authorization.rb:137:in `call'
+railties (7.0.7.2) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2023-08-31 13:13:44 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 3.0ms | Allocations: 493)
+Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 1575)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-31 13:13:55 -0400
+Processing by DatosController#index as HTML
+  [1m[36mDato Load (0.7ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:6:in `index'
+Completed 200 OK in 32ms (Views: 17.5ms | ActiveRecord: 10.8ms | Allocations: 3689)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-31 13:15:03 -0400
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#create as */*
+Completed 400 Bad Request in 7ms (ActiveRecord: 0.0ms | Allocations: 3869)
+
+
+  
+ActionController::ParameterMissing (param is missing or the value is empty: dato):
+  
+app/controllers/datos_controller.rb:46:in `dato_params'
+app/controllers/datos_controller.rb:17:in `create'
+Started POST "/datos" for 127.0.0.1 at 2023-08-31 13:16:38 -0400
+Processing by DatosController#create as */*
+  Parameters: {"dato"=>{"nombre"=>"Ejemplo", "descripcion"=>"Esto es un ejemplo"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/datos_controller.rb:19:in `create'
+  [1m[36mDato Create (15.9ms)[0m  [1m[32mINSERT INTO "datos" ("nombre", "descripcion", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Ejemplo"], ["descripcion", "Esto es un ejemplo"], ["created_at", "2023-08-31 17:16:38.822382"], ["updated_at", "2023-08-31 17:16:38.822382"]]
+  ↳ app/controllers/datos_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/datos_controller.rb:19:in `create'
+Completed 201 Created in 64ms (Views: 0.6ms | ActiveRecord: 24.5ms | Allocations: 23854)
+
+
+Started GET "/" for ::1 at 2023-08-31 13:16:47 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 2.2ms | Allocations: 494)
+Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.0ms | Allocations: 1691)
+
+
+Started GET "/datos" for ::1 at 2023-08-31 13:16:49 -0400
+Processing by DatosController#index as HTML
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:9:in `index'
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.4ms | Allocations: 1435)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-31 13:18:43 -0400
+Processing by DatosController#index as */*
+  Parameters: {"dato"=>{}}
+  [1m[36mDato Load (0.5ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.5ms | Allocations: 1092)
+
+
+Started GET "/datos/:1" for 127.0.0.1 at 2023-08-31 13:20:19 -0400
+Processing by DatosController#show as */*
+  Parameters: {"id"=>":1", "dato"=>{}}
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:42:in `set_dato'
+Completed 404 Not Found in 22ms (ActiveRecord: 0.7ms | Allocations: 7367)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Dato with 'id'=:1):
+  
+app/controllers/datos_controller.rb:42:in `set_dato'
+Started GET "/datos/:2" for 127.0.0.1 at 2023-08-31 13:20:27 -0400
+Processing by DatosController#show as */*
+  Parameters: {"id"=>":2", "dato"=>{}}
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:42:in `set_dato'
+Completed 404 Not Found in 3ms (ActiveRecord: 0.4ms | Allocations: 927)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Dato with 'id'=:2):
+  
+app/controllers/datos_controller.rb:42:in `set_dato'
+Started GET "/datos/:1" for 127.0.0.1 at 2023-08-31 13:23:41 -0400
+Processing by DatosController#show as */*
+  Parameters: {"id"=>":1", "dato"=>{}}
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", nil], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:42:in `set_dato'
+Completed 404 Not Found in 2ms (ActiveRecord: 0.4ms | Allocations: 920)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Dato with 'id'=:1):
+  
+app/controllers/datos_controller.rb:42:in `set_dato'
+  [1m[36mDato Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+Started GET "/datos/1" for 127.0.0.1 at 2023-08-31 13:26:08 -0400
+Processing by DatosController#show as */*
+  Parameters: {"id"=>"1", "dato"=>{}}
+  [1m[36mDato Load (0.5ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:42:in `set_dato'
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.5ms | Allocations: 760)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-31 13:26:53 -0400
+Processing by DatosController#index as */*
+  Parameters: {"dato"=>{}}
+  [1m[36mDato Load (0.6ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.6ms | Allocations: 1085)
+
+
+Started POST "/datos" for 127.0.0.1 at 2023-08-31 13:27:36 -0400
+Processing by DatosController#create as */*
+  Parameters: {"dato"=>{"nombre"=>"Test2", "descripcion"=>"Test con los comandos CRUD creados"}}
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/datos_controller.rb:19:in `create'
+  [1m[36mDato Create (0.4ms)[0m  [1m[32mINSERT INTO "datos" ("nombre", "descripcion", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["nombre", "Test2"], ["descripcion", "Test con los comandos CRUD creados"], ["created_at", "2023-08-31 17:27:36.292357"], ["updated_at", "2023-08-31 17:27:36.292357"]]
+  ↳ app/controllers/datos_controller.rb:19:in `create'
+  [1m[36mTRANSACTION (8.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/datos_controller.rb:19:in `create'
+Completed 201 Created in 14ms (Views: 0.5ms | ActiveRecord: 8.9ms | Allocations: 2019)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-31 13:27:40 -0400
+Processing by DatosController#index as */*
+  Parameters: {"dato"=>{}}
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:9:in `index'
+Completed 200 OK in 4ms (Views: 3.0ms | ActiveRecord: 0.4ms | Allocations: 1170)
+
+
+Started PATCH "/datos/5" for 127.0.0.1 at 2023-08-31 13:29:50 -0400
+Processing by DatosController#update as */*
+  Parameters: {"dato"=>{"nombre"=>"Test3", "descripcion"=>"Actualizacion de dato"}, "id"=>"5"}
+  [1m[36mDato Load (0.4ms)[0m  [1m[34mSELECT "datos".* FROM "datos" WHERE "datos"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/datos_controller.rb:42:in `set_dato'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/datos_controller.rb:27:in `update'
+  [1m[36mDato Update (0.4ms)[0m  [1m[33mUPDATE "datos" SET "nombre" = $1, "descripcion" = $2, "updated_at" = $3 WHERE "datos"."id" = $4[0m  [["nombre", "Test3"], ["descripcion", "Actualizacion de dato"], ["updated_at", "2023-08-31 17:29:50.638606"], ["id", 5]]
+  ↳ app/controllers/datos_controller.rb:27:in `update'
+  [1m[36mTRANSACTION (15.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/datos_controller.rb:27:in `update'
+Completed 200 OK in 23ms (Views: 0.5ms | ActiveRecord: 16.2ms | Allocations: 2582)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-08-31 13:29:57 -0400
+Processing by DatosController#index as */*
+  Parameters: {"dato"=>{}}
+  [1m[36mDato Load (0.6ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:9:in `index'
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.6ms | Allocations: 1169)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-05 09:09:19 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /var/lib/gems/3.0.0/gems/railties-7.0.7.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 1.5ms | Allocations: 827)
+Completed 200 OK in 11ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 7787)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-09-05 09:09:23 -0300
+Processing by DatosController#index as HTML
+  [1m[36mDato Load (1.2ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:9:in `index'
+Completed 200 OK in 34ms (Views: 26.1ms | ActiveRecord: 5.8ms | Allocations: 18094)
+
+
+Started GET "/datos" for 127.0.0.1 at 2023-09-05 09:31:49 -0300
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by DatosController#index as */*
+  Parameters: {"dato"=>{}}
+  [1m[36mDato Load (0.3ms)[0m  [1m[34mSELECT "datos".* FROM "datos"[0m
+  ↳ app/controllers/datos_controller.rb:9:in `index'
+Completed 200 OK in 13ms (Views: 8.5ms | ActiveRecord: 3.5ms | Allocations: 19613)
+
+
